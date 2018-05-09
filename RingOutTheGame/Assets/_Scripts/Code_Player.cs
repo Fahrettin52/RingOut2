@@ -39,13 +39,15 @@ public class Code_Player : MonoBehaviour {
     [Header("Knockback")]
     public int knockbackSpeed; // How fast (by proxy how far) the PC will move when knockedback
     private int startKnockbackSpeed;
+    public ParticleSystem onHitPS; // The particles that appear when you get hit
 
     public float knockbackTime; // How long the knockback effect lasts
     private float staminaRegen;
 
     [Header("Teleport related")]
     public bool didTP; //Checks if player teleported
-    public Transform[] tpList; // Array of tps, can be changed to list if so required
+    public Transform[] tpHorizontal; // Array of teleportationsports on the x axis
+    public Transform[] tpVertical; // Array of teleportationsports on the y axis
 
     [Header("Raycasts")]
     public LayerMask groundLayer;
@@ -146,8 +148,33 @@ public class Code_Player : MonoBehaviour {
 
     // Performs a teleportation
     private void Teleport() {
-        int random = Random.Range(0, 4);
-        transform.position = tpList[random].position;
+        if (Input.GetAxis("Horizontal" + playerNumber) > 0.5f || Input.GetAxis("Horizontal" + playerNumber) < -0.5f) {
+            if (Input.GetAxis("Horizontal" + playerNumber) < -0.5f) {
+                transform.position = tpHorizontal[0].position;
+            }
+            else {
+                transform.position = tpHorizontal[1].position;
+            }
+        }
+
+        else if (Input.GetAxis("Vertical" + playerNumber) > 0.5f || Input.GetAxis("Vertical" + playerNumber) < -0.5f) {
+            if (Input.GetAxis("Vertical" + playerNumber) < -0.5f) {
+                transform.position = tpVertical[0].position;
+            }
+            else {
+                transform.position = tpVertical[1].position;
+            }
+        }
+
+        else {
+            int random = Random.Range(0, 2);
+            if (random == 0) {
+                transform.position = tpHorizontal[Random.Range(0,tpHorizontal.Length)].position;
+            }
+            else {
+                transform.position = tpVertical[Random.Range(0, tpVertical.Length)].position;
+            }
+        }
     }
 
     // Checks if the player is touching ground
@@ -243,6 +270,13 @@ public class Code_Player : MonoBehaviour {
 
         // Start countdown Coroutine
         StartCoroutine(KnockbackCountdown());
+
+        // Lowers stamina on hit
+        stamina -= attackCost * 1.5f;
+        UpdateStaminaBar();
+
+        // Play on hit particles
+        onHitPS.Play();
     }
 
     // Is called when mayMove is false and translates the PC into it's appropraite direction. Until mayMove is true again
@@ -313,11 +347,18 @@ public class Code_Player : MonoBehaviour {
 
     // Updates the staminabar UI
     public void UpdateStaminaBar() {
+        if (stamina < 0) {
+            stamina = 0;
+        }
         staminaBar.fillAmount = stamina / 100;
     }
 
     // Sets any variable that needs to be set during Start()
     private void SetStartVariables (){
+        if (onHitPS.isEmitting) {
+            onHitPS.Stop();
+        }
+
         ResetDelegates();
         playerNumberString = playerNumber.ToString();
         startStamina = stamina;
@@ -340,7 +381,7 @@ public class Code_Player : MonoBehaviour {
     private void SetDie() {
         death = Die;
         if (deathShieldPS.isEmitting) {
-            deathShieldPS.Stop();
+            deathShieldPS.gameObject.SetActive(false);
         }
     }   
 
@@ -356,7 +397,7 @@ public class Code_Player : MonoBehaviour {
     public void SetDeathShield() {
         if (death != DeathShield) {
             death = DeathShield;
-            deathShieldPS.Play();
+            deathShieldPS.gameObject.SetActive(true);
             deathShieldCoroutine = StartCoroutine(DeathShieldCountdown());            
         }
     }
