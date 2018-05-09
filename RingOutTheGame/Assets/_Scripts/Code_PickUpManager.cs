@@ -7,6 +7,7 @@ public class Code_PickUpManager : MonoBehaviour {
     public float dropTimer; // Timer for between drops
     public Code_PickUp[] pickUps; // Array of pickUp objects
     private int pooledCount; // Keeps track of how many items in the pickUps Array are pooled  
+    [HideInInspector]
     public Code_Arena arena; // The arena in the scene and given by the gameMng  
     public int[] dropRadius; // The various maximum distance the pickups can drop in
 

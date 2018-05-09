@@ -417,9 +417,14 @@ public class Code_Player : MonoBehaviour {
 
     // Resets the players when the players choose to continue the match
     public void ResetPlayer() {
-        didTP = false;
+        ResetTelePort();
         ResetDelegates();
-        ResetStamina();
+        ResetStamina();        
+    }
+
+    // Resets the value for the Teleport
+    public void ResetTelePort() {
+        didTP = false;
         teleportImage.sprite = teleportNotUsed;
     }
 

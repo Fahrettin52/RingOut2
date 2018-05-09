@@ -18,9 +18,9 @@ public class Code_PickUp : MonoBehaviour {
     // When it's hit by a player
     public void PickedUp(Code_Player player) {
         if (!CheckPlayerForPickUp(player)) {
-            ActivatePickUpEffect(player);
-            PoolPickUp();
+            ActivatePickUpEffect(player);            
         }
+        PoolPickUp();
     }
 
     // Pools the pickup and stores it once more

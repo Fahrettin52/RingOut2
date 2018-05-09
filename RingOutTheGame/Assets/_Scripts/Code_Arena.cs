@@ -26,6 +26,11 @@ public class Code_Arena : MonoBehaviour {
     // Calls the TimeBEtweenActivations so that the fall process doesn't start immediately
     public void ActivateFallProcess() {
         StartBouncer();
+        StartTimeBetweenActivations();
+    }
+
+    // Starts the Coroutine, can be called from other scripts
+    public void StartTimeBetweenActivations() {
         StartCoroutine(TimeBetweenActivations(ringActivationTime));
     }
 
@@ -39,9 +44,8 @@ public class Code_Arena : MonoBehaviour {
     private void ActivateRing() {
         if (currentRing < rings.Length - ringsLengthDecreaser) {
             rings[currentRing].GetComponent<Animator>().SetTrigger("Activate");
-            UpdateCameraBonuses();
+            //UpdateCameraBonuses();
             currentRing++;
-            StartCoroutine(TimeBetweenActivations(ringActivationTime));
         }        
     }
 
@@ -52,7 +56,7 @@ public class Code_Arena : MonoBehaviour {
 
     // Update the camera position based on the currentRing
     public void UpdateCameraBonuses() {
-        gameMng.camCon.UpdateBonuses(currentRing);
+        gameMng.camCon.UpdateBonuses(currentRing-1);
     }
 
     // Activates the bouncer
