@@ -2221,7 +2221,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1768318597199472}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.5, z: -0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4050896983764310}
@@ -2471,7 +2471,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265491937578664}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0, y: -9.137404, z: 0.18188094}
+  m_LocalPosition: {x: -0, y: -9.137404, z: 0.1818809}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4819796499191386}
@@ -8547,7 +8547,7 @@ MonoBehaviour:
   - {fileID: 1265491937578664}
   - {fileID: 1768318597199472}
   - {fileID: 1922139083816628}
-  ringActivationTime: 15
+  ringActivationTime: 10
   ringsToBeSaved: 1
 --- !u!114 &114981134985727708
 MonoBehaviour:
