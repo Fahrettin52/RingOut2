@@ -276,6 +276,9 @@ public class Code_GameManager : MonoBehaviour {
         // Reset the Camera bonus
         camCon.UpdateBonuses(-1); // The UpdateBonusses itself increments the int value with 1
 
+        // Resets the camera to it's origin position
+        camCon.ResetCamera();
+
         // Call SpawnPlayers
         SpawnPlayers();
     }    

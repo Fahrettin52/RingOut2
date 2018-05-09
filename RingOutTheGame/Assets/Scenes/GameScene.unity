@@ -2897,6 +2897,11 @@ Prefab:
       propertyPath: bouncer
       value: 
       objectReference: {fileID: 1079475359}
+    - target: {fileID: 114979698290633004, guid: fa5241ad307e2bc48aba30f377b916f6,
+        type: 2}
+      propertyPath: ringActivationTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa5241ad307e2bc48aba30f377b916f6, type: 2}
   m_IsPrefabParent: 0
@@ -4348,8 +4353,8 @@ RectTransform:
   m_LocalScale: {x: 1.0000086, y: 1.0000086, z: 1.000008}
   m_Children:
   - {fileID: 1688558049}
-  - {fileID: 1692970855}
   - {fileID: 880315269}
+  - {fileID: 1692970855}
   m_Father: {fileID: 769927132}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -5332,7 +5337,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695361241}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13998,7 +14003,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 695361241}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -18,7 +18,7 @@ public class Code_CameraControl : MonoBehaviour
     public float[] zoomBonus; // Adds an extra amount of range allowing for outside controll of the zomming
     private int curBonus; // The current bonus in both the yBonus and zoomBonus arrays
     public float[] yBonus; // Add an extra amount of range allowing for outside manipulation
-    private float yStartPos; // Gets the transform.position at the start of the game
+    private Vector3 startPos; // Gets the transform.position at the start of the game
 
     [Header("ZoomBonus values based on the number of players selected")]
     public float[] twoPlayersBonus; // all but the last indexes of the zoomBonus and yBonus, when two players were selected
@@ -35,7 +35,7 @@ public class Code_CameraControl : MonoBehaviour
     // Use this for initialization
     void Start() {
         players.Add(focus.gameObject);
-        yStartPos = transform.position.y;
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -73,8 +73,7 @@ public class Code_CameraControl : MonoBehaviour
 
         // Zoom determines the maximum and minimum movement range for the camera
         float zoom = Mathf.Lerp(zoomMax, zoomMin, lerpPercent);
-        camPos = new Vector3(centerPoint.x, yStartPos - yBonus[curBonus], (zoom - zoomBonus[curBonus]) * -1f);
-        print("Curbonuds is " + curBonus);
+        camPos = new Vector3(centerPoint.x, startPos.y - yBonus[curBonus], (zoom - zoomBonus[curBonus]) * -1f);
     }
 
     // The function that actually moves the camera proper
@@ -97,7 +96,6 @@ public class Code_CameraControl : MonoBehaviour
     public void UpdateBonuses(int curRing) {
         curRing++;
         if (curRing < zoomBonus.Length) {
-            print("curRing is valued customer");
             curBonus = curRing;
         }
     }
@@ -123,4 +121,10 @@ public class Code_CameraControl : MonoBehaviour
             zoomBonus[i] = playerBonusList[i];
         }
     }
+
+    // Resets the camera to it's origin position
+    public void ResetCamera() {
+        transform.position = startPos;
+    }
+
 }
