@@ -29,6 +29,8 @@ public class Code_SoundManager : MonoBehaviour {
         }
         // Call the methode that plays the background music
         PlayMainMenuMusic();
+        // Call the methode that plays the rain music
+        PlayRainMusic();
     }
 
     /// <summary>
@@ -44,6 +46,15 @@ public class Code_SoundManager : MonoBehaviour {
     public void PlayGameMusic() {
         if (volumeChecks[1].isOn) {
             musicAudioSource[1].Play();
+        }
+    }
+
+    /// <summary>
+    /// Play the in rain music
+    /// </summary>
+    public void PlayRainMusic() {
+        if (volumeChecks[2].isOn) {
+            musicAudioSource[2].Play();
         }
     }
 
