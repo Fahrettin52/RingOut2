@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 817410328}
-  m_IndirectSpecularColor: {r: 0.5467578, g: 0.48516273, b: 0.6524753, a: 1}
+  m_IndirectSpecularColor: {r: 0.5390309, g: 0.4768073, b: 0.6479272, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -167,6 +167,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96f2bc190f1b7ab46a26872f90662541, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2464050
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980317539416232, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 574b850b691775a46915891cc8a0e8e2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &24300329
 GameObject:
@@ -602,48 +644,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
---- !u!1001 &89591164
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705262144564096, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: f9ea96fc0e6409649bf4efab44915f24, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &94439900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3936,7 +3936,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.85
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8115,6 +8115,11 @@ Prefab:
       propertyPath: sceneCamera
       value: 
       objectReference: {fileID: 94439900}
+    - target: {fileID: 114983368936533552, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: sceneCamera
+      value: 
+      objectReference: {fileID: 94439900}
     - target: {fileID: 114569293833564106, guid: 7df1a967f926258499309f43d541aba9,
         type: 2}
       propertyPath: tpHorizontal.Array.data[0]
@@ -8131,6 +8136,46 @@ Prefab:
       value: 
       objectReference: {fileID: 106127362}
     - target: {fileID: 114569293833564106, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpVertical.Array.data[1]
+      value: 
+      objectReference: {fileID: 1961344712}
+    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpHorizontal.Array.data[0]
+      value: 
+      objectReference: {fileID: 657330926}
+    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpHorizontal.Array.data[1]
+      value: 
+      objectReference: {fileID: 814240300}
+    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpVertical.Array.data[0]
+      value: 
+      objectReference: {fileID: 106127362}
+    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpVertical.Array.data[1]
+      value: 
+      objectReference: {fileID: 1961344712}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpHorizontal.Array.data[0]
+      value: 
+      objectReference: {fileID: 657330926}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpHorizontal.Array.data[1]
+      value: 
+      objectReference: {fileID: 814240300}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: tpVertical.Array.data[0]
+      value: 
+      objectReference: {fileID: 106127362}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
         type: 2}
       propertyPath: tpVertical.Array.data[1]
       value: 
@@ -8140,51 +8185,6 @@ Prefab:
       propertyPath: sceneCamera
       value: 
       objectReference: {fileID: 94439900}
-    - target: {fileID: 114983368936533552, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: sceneCamera
-      value: 
-      objectReference: {fileID: 94439900}
-    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpHorizontal.Array.data[0]
-      value: 
-      objectReference: {fileID: 657330926}
-    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpHorizontal.Array.data[1]
-      value: 
-      objectReference: {fileID: 814240300}
-    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpVertical.Array.data[0]
-      value: 
-      objectReference: {fileID: 106127362}
-    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpVertical.Array.data[1]
-      value: 
-      objectReference: {fileID: 1961344712}
-    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpHorizontal.Array.data[0]
-      value: 
-      objectReference: {fileID: 657330926}
-    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpHorizontal.Array.data[1]
-      value: 
-      objectReference: {fileID: 814240300}
-    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpVertical.Array.data[0]
-      value: 
-      objectReference: {fileID: 106127362}
-    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
-        type: 2}
-      propertyPath: tpVertical.Array.data[1]
-      value: 
-      objectReference: {fileID: 1961344712}
     - target: {fileID: 114420557575238606, guid: 7df1a967f926258499309f43d541aba9,
         type: 2}
       propertyPath: tpHorizontal.Array.data[0]
