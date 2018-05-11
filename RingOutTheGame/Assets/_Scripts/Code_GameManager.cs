@@ -235,6 +235,7 @@ public class Code_GameManager : MonoBehaviour {
 
     // Automatically restarts the game after a victory has been declared
     private IEnumerator RestartFromVictory() {
+        ingameMng.eventSystem.SetSelectedGameObject(null); // Emptys the setselectedgameobject
         yield return new WaitForSeconds(3f); // TODO replace the 3f with a public variable        
         victoryBanner.SetActive(false);
         TogglePause();
