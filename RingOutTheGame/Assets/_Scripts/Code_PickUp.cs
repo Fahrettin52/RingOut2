@@ -7,12 +7,21 @@ public class Code_PickUp : MonoBehaviour {
     public Code_PickUpManager pickUpMng; // The Code_PickUpManager in the scene
     [HideInInspector]
     public bool isUnpooled; // Keeps track whether the pickup is pooled or not
+    public float timer; // How long the box stays
+    private Coroutine repool;
 
     // Unpools the pickup object into the level
     public void Unpool(Vector3 dropPos) {
         isUnpooled = true;
         transform.position = dropPos;
         gameObject.SetActive(true);
+        repool = StartCoroutine(RepoolCountdown());
+    }
+
+    // Repool itself after a specific time
+    private IEnumerator RepoolCountdown() {
+        yield return new WaitForSeconds(timer);
+        PoolPickUp();
     }
 
     // When it's hit by a player
@@ -25,6 +34,9 @@ public class Code_PickUp : MonoBehaviour {
 
     // Pools the pickup and stores it once more
     public void PoolPickUp() {
+        if (repool != null) {
+            StopCoroutine(repool);
+        }
         isUnpooled = false;
         pickUpMng.ChangePooledCount(1);
         gameObject.SetActive(false);

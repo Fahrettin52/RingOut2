@@ -339,6 +339,14 @@ public class Code_Player : MonoBehaviour {
         }
     }
 
+    // Increases stamina
+    public void IncreaseStamina(float amount) {
+        if (stamina < startStamina) {
+            stamina += amount;
+            UpdateStaminaBar();
+        }
+    }
+
     // Fully regenerates the stamina
     public void ResetStamina() {
         stamina = startStamina;
