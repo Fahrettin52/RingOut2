@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Code_Shield : MonoBehaviour {
 
+    public float damage;
     private Animator anim;
     private BoxCollider myCol;
     private Code_Player playerCode; // The Code_Player component on the parent of this shield
@@ -40,8 +41,10 @@ public class Code_Shield : MonoBehaviour {
         Transform colTrans = col.transform;
         if (col.gameObject != parentPlayer) {
             if (colTrans.CompareTag(playerTag) || colTrans.CompareTag(shieldTag)) {
-                if (colTrans.GetComponent<Code_Player>() != null) {
-                    colTrans.GetComponent<Code_Player>().StartKnockback(transform.position);
+                Code_Player cP = colTrans.GetComponent<Code_Player>();
+                if (cP != null) {
+                    cP.StartKnockback(transform.position);
+                    cP.DamageStamina(playerCode.ActualDamage);
                 }
             }
         }

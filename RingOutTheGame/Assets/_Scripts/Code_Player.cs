@@ -34,7 +34,7 @@ public class Code_Player : MonoBehaviour {
     public float staminaRegenRate; // The rate per tick that stamina regenerates
     public Sprite teleportNotUsed; // This holds the image that shows the plater that the teleport is not used
     public Sprite teleportUsed; // This holds the image that shows the player that the teleport is used
-    public Image teleportImage; // The teleport image 
+    public Image teleportImage; // The teleport image     
 
     [Header("Knockback")]
     public int knockbackSpeed; // How fast (by proxy how far) the PC will move when knockedback
@@ -43,6 +43,21 @@ public class Code_Player : MonoBehaviour {
 
     public float knockbackTime; // How long the knockback effect lasts
     private float staminaRegen;
+
+    [Header("Stamina Damage")]
+    public float damage;
+    public float damageMultiplier;
+    private float startMultiplier;
+    public float maxMultiplier;
+    public GameObject[] multiplierIcons; // Icons for the multiplierIcons
+    private int curIcon; // Keeps track of the current active multiplierIcons
+
+    [HideInInspector]
+    public float ActualDamage { // When/if we remove the Code_Shield this'll have to become a private var
+        get {
+            return damage * damageMultiplier;
+        }
+    }
 
     [Header("Teleport related")]
     public bool didTP; //Checks if player teleported
@@ -56,7 +71,7 @@ public class Code_Player : MonoBehaviour {
     [Header("Based on players remaining stamina")]
     public int[] knockbackDangerLevels; // The dangerlevels of having low stamina. A lower amount means a higher knockbackMultiplier
     [Header("Based on the array above (Has to be same size)")]
-    public float[] knockbackMultiplierList; // Connected to knockbackDangerLevels. Determine when to use which multiplier
+    public float[] knockbackMultiplierList; // Connected to knockbackDangerLevels. Determine when to use which multiplier    
 
     private Rigidbody rigidbod;
     private Vector3 knockbackDir; // Direction the knockback will move in
@@ -253,7 +268,7 @@ public class Code_Player : MonoBehaviour {
                 stamina -= attackCost;
             }
         }
-    }
+    }    
 
     //// Starts the knockback sequence
     public void StartKnockback(Vector3 hitPosition) {
@@ -269,11 +284,7 @@ public class Code_Player : MonoBehaviour {
         playerAnim.SetTrigger("Knockedback");
 
         // Start countdown Coroutine
-        StartCoroutine(KnockbackCountdown());
-
-        // Lowers stamina on hit
-        stamina -= attackCost * 1.5f;
-        UpdateStaminaBar();
+        StartCoroutine(KnockbackCountdown());      
 
         // Play on hit particles
         onHitPS.Play();
@@ -345,11 +356,17 @@ public class Code_Player : MonoBehaviour {
             stamina += amount;
             UpdateStaminaBar();
         }
-    }
+    }    
 
     // Fully regenerates the stamina
     public void ResetStamina() {
         stamina = startStamina;
+        UpdateStaminaBar();
+    }
+
+    // Lowers the stamina of the player when he got hit
+    public void DamageStamina(float stamDam) {
+        stamina -= stamDam; // This is based on a previous calculation: stamina -= attackCost * 1.5f;
         UpdateStaminaBar();
     }
 
@@ -361,6 +378,33 @@ public class Code_Player : MonoBehaviour {
         staminaBar.fillAmount = stamina / 100;
     }
 
+    // Increases the DamageMultiplier
+    public void IncreaseDamageMultiplier(float multiplier) {
+        damageMultiplier += multiplier;
+        if (damageMultiplier > maxMultiplier) {
+            damageMultiplier = maxMultiplier;
+        }
+        ActivateIcons();
+    }
+
+    // Activates the multiplier icons for whenever a player pick one up
+    private void ActivateIcons() {
+        if (curIcon < multiplierIcons.Length-1) {
+            multiplierIcons[curIcon].SetActive(true);
+            curIcon++;
+        }
+    }
+
+    // Resets the damageMultiplier when the match starts anew
+    public void ResetDamageMultiplier() {
+        damageMultiplier = startMultiplier;
+
+        // Reset the multiplierIcons here
+        for (int i = curIcon; i > -1; i--) {
+            multiplierIcons[i].SetActive(false);
+        }
+    }
+
     // Sets any variable that needs to be set during Start()
     private void SetStartVariables (){
         if (onHitPS.isEmitting) {
@@ -370,6 +414,7 @@ public class Code_Player : MonoBehaviour {
         ResetDelegates();
         playerNumberString = playerNumber.ToString();
         startStamina = stamina;
+        startMultiplier = damageMultiplier;
         startKnockbackSpeed = knockbackSpeed;
         playerAnim = GetComponentInChildren<Animator>();
         shieldCode = shield.GetComponent<Code_Shield>();
@@ -427,7 +472,8 @@ public class Code_Player : MonoBehaviour {
     public void ResetPlayer() {
         ResetTelePort();
         ResetDelegates();
-        ResetStamina();        
+        ResetStamina();
+        ResetDamageMultiplier();
     }
 
     // Resets the value for the Teleport
@@ -450,6 +496,7 @@ public class Code_Player : MonoBehaviour {
     public void OnCollisionEnter(Collision col) {
         if (col.transform.name == "Bouncer") {
             StartKnockback(col.transform.position);
+            DamageStamina(ActualDamage);
         }
     }
 }
