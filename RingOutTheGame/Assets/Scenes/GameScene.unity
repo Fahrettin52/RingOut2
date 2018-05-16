@@ -5941,7 +5941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMng: {fileID: 189380829}
-  dropTimer: 1
+  dropTimer: 7.5
   pickUps:
   - {fileID: 332470364}
   - {fileID: 1641826366}
@@ -9949,6 +9949,26 @@ Prefab:
         type: 2}
       propertyPath: keyboardControlled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420557575238606, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: attackCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569293833564106, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: attackCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: attackCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: attackCost
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7df1a967f926258499309f43d541aba9, type: 2}

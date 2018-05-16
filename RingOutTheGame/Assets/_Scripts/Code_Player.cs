@@ -355,6 +355,9 @@ public class Code_Player : MonoBehaviour {
     public void IncreaseStamina(float amount) {
         if (stamina < startStamina) {
             stamina += amount;
+            if (stamina > startStamina) {
+                stamina = startStamina;
+            }
             UpdateStaminaBar();
         }
     }    
