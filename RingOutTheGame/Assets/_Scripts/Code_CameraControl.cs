@@ -25,10 +25,6 @@ public class Code_CameraControl : MonoBehaviour
     public float[] threePlayersBonus; // all but the last indexes of the zoomBonus and yBonus, when three players were selected
     public float[] fourPlayersBonus; // all but the last indexes of the zoomBonus and yBonus, when four players were selected
 
-    // Need to check and see if we want to move the angles of the camera
-    //public float angleMax;
-    //public float angleMin;
-
     //private float cameraEulerX;
     private Vector3 camPos; // The calculated future position of the camera
 
@@ -68,9 +64,6 @@ public class Code_CameraControl : MonoBehaviour
         float extents = (playerBounds.extents.x + playerBounds.extents.z);
         float lerpPercent = Mathf.InverseLerp(0, (focus.halfXBounds + focus.halfYBounds), extents);
 
-        //float angle = Mathf.Lerp(angleMax, angleMin, lerpPercent);
-        //cameraEulerX = angle;
-
         // Zoom determines the maximum and minimum movement range for the camera
         float zoom = Mathf.Lerp(zoomMax, zoomMin, lerpPercent);
         camPos = new Vector3(centerPoint.x, startPos.y - yBonus[curBonus], (zoom - zoomBonus[curBonus]) * -1f);
@@ -83,13 +76,6 @@ public class Code_CameraControl : MonoBehaviour
         if (pos != camPos) {
             transform.position = Vector3.MoveTowards(pos, camPos, speed * Time.deltaTime);
         }
-
-        //moves the angles of the camera
-        //vector3 localeuler = transform.localeulerangles;
-        //if (localeuler.x != cameraeulerx) {
-        //    vector3 targeteuler = new vector3(cameraeulerx, localeuler.y, localeuler.z);
-        //    transform.localeulerangles = vector3.movetowards(localeuler, targeteuler, cameraspeed * time.deltatime);
-        //}
     }
 
     // Updates the curBonus which will the determine the value of both the yBonus and zoomBonus
@@ -126,5 +112,4 @@ public class Code_CameraControl : MonoBehaviour
     public void ResetCamera() {
         transform.position = startPos;
     }
-
 }
