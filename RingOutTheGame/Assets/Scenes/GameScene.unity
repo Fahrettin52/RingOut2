@@ -5941,7 +5941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMng: {fileID: 189380829}
-  dropTimer: 5
+  dropTimer: 1
   pickUps:
   - {fileID: 332470364}
   - {fileID: 1641826366}
@@ -9944,6 +9944,11 @@ Prefab:
     - target: {fileID: 4644365744468924, guid: 7df1a967f926258499309f43d541aba9, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: keyboardControlled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7df1a967f926258499309f43d541aba9, type: 2}

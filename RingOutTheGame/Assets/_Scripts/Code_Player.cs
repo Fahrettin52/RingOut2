@@ -266,6 +266,7 @@ public class Code_Player : MonoBehaviour {
                 SwitchMoveState(MoveState.Attacking);
                 shieldCode.Attack();
                 stamina -= attackCost;
+                UpdateStaminaBar();
             }
         }
     }    
@@ -389,7 +390,7 @@ public class Code_Player : MonoBehaviour {
 
     // Activates the multiplier icons for whenever a player pick one up
     private void ActivateIcons() {
-        if (curIcon < multiplierIcons.Length-1) {
+        if (curIcon < multiplierIcons.Length) {
             multiplierIcons[curIcon].SetActive(true);
             curIcon++;
         }
@@ -399,10 +400,16 @@ public class Code_Player : MonoBehaviour {
     public void ResetDamageMultiplier() {
         damageMultiplier = startMultiplier;
 
+        if (curIcon == multiplierIcons.Length) {
+            curIcon--;
+        }
+
         // Reset the multiplierIcons here
         for (int i = curIcon; i > -1; i--) {
             multiplierIcons[i].SetActive(false);
         }
+
+        curIcon = 0;
     }
 
     // Sets any variable that needs to be set during Start()

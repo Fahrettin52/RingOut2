@@ -7,7 +7,6 @@ public class Code_PickUp_Teleport : Code_PickUp {
     // Checks if the player already possesses has a Teleport
     public override bool CheckPlayerForPickUp(Code_Player player) {
         bool canRTP = !player.didTP;
-        print(canRTP);
         return canRTP; // didTP must be false for true for this function to work, so it'll have to be inversed
     }
 
