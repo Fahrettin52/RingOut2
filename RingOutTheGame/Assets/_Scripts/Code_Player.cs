@@ -32,8 +32,6 @@ public class Code_Player : MonoBehaviour {
     private float startStamina;
     public float staminaRegenAmount; // With how much the stamina regenerates per rate
     public float staminaRegenRate; // The rate per tick that stamina regenerates
-    public Sprite teleportNotUsed; // This holds the image that shows the plater that the teleport is not used
-    public Sprite teleportUsed; // This holds the image that shows the player that the teleport is used
     public Image teleportImage; // The teleport image     
 
     [Header("Knockback")]
@@ -158,7 +156,7 @@ public class Code_Player : MonoBehaviour {
         if (!didTP && Input.GetButton("YButton" + playerNumberString)) {
             didTP = true;
             Teleport();
-            teleportImage.sprite = teleportUsed;
+            teleportImage.enabled = false;
         }
     }
 
@@ -496,7 +494,7 @@ public class Code_Player : MonoBehaviour {
     // Resets the value for the Teleport
     public void ResetTelePort() {
         didTP = false;
-        teleportImage.sprite = teleportNotUsed;
+        teleportImage.enabled = true;
     }
 
     // Resets all the delegates upon resetting the game
