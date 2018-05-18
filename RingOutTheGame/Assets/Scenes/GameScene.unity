@@ -1140,7 +1140,6 @@ GameObject:
   m_Component:
   - component: {fileID: 189380830}
   - component: {fileID: 189380829}
-  - component: {fileID: 189380831}
   m_Layer: 0
   m_Name: GameMng
   m_TagString: GameMng
@@ -1198,18 +1197,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &189380831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189380828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61805627adfd4645bfa827203598590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 0.1
 --- !u!1 &192885327
 GameObject:
   m_ObjectHideFlags: 0
@@ -9289,6 +9276,11 @@ Prefab:
     - target: {fileID: 114128890204828390, guid: b2ab542f5ff21bb4db8676a902bbe287,
         type: 2}
       propertyPath: SettingsMenu
+      value: 
+      objectReference: {fileID: 769927140}
+    - target: {fileID: 114128890204828390, guid: b2ab542f5ff21bb4db8676a902bbe287,
+        type: 2}
+      propertyPath: settingsMenu
       value: 
       objectReference: {fileID: 769927140}
     m_RemovedComponents: []
