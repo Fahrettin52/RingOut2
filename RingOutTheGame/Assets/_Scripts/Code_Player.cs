@@ -40,6 +40,7 @@ public class Code_Player : MonoBehaviour {
     public int knockbackSpeed; // How fast (by proxy how far) the PC will move when knockedback
     private int startKnockbackSpeed;
     public ParticleSystem onHitPS; // The particles that appear when you get hit
+    public Code_SoundManager soundMng; // The soundmanager in the scene
 
     public float knockbackTime; // How long the knockback effect lasts
     private float staminaRegen;
@@ -288,7 +289,13 @@ public class Code_Player : MonoBehaviour {
         StartCoroutine(KnockbackCountdown());      
 
         // Play on hit particles
-        onHitPS.Play();
+        onHitPS.Play();        
+    }
+
+    // Plays any knockback sound for the player
+    public void KnockbackSound() {
+        // Play the grunting sound
+        soundMng.PlayGruntingSound();
     }
 
     // Is called when mayMove is false and translates the PC into it's appropraite direction. Until mayMove is true again
@@ -505,8 +512,9 @@ public class Code_Player : MonoBehaviour {
     // Is the only Function that call StartKnockback() and should be removed/changed once the shields are being implemented
     public void OnCollisionEnter(Collision col) {
         if (col.transform.name == "Bouncer") {
+            soundMng.PlayFrogSound();
             StartKnockback(col.transform.position);
-            DamageStamina(ActualDamage);
+            DamageStamina(ActualDamage);            
         }
     }
 }

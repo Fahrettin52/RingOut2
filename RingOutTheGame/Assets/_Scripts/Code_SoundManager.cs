@@ -71,6 +71,17 @@ public class Code_SoundManager : MonoBehaviour {
         sFXAudioSource[2].Play(); // Play the third audio in sFXAudioSource.
     }
 
+    // Play the frog sound.
+    public void PlayFrogSound() {
+        characterAudioSource[0].Play(); // Play the frog sound.
+    }
+
+    // Play the grunting sound.
+    public void PlayGruntingSound() {
+        characterAudioSource[1].clip = characterAudioClip[Random.Range(1, characterAudioClip.Length)]; // Pick a random grunt sound from the list and set it to the characterAudioSource.
+        characterAudioSource[1].Play(); // Play the grunt sound.
+    }
+
     /// <summary>
     /// Mute or unmute the the chosen audiosource.
     /// </summary>

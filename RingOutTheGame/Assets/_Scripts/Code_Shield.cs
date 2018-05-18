@@ -44,6 +44,7 @@ public class Code_Shield : MonoBehaviour {
                 Code_Player cP = colTrans.GetComponent<Code_Player>();
                 if (cP != null) {
                     cP.StartKnockback(transform.position);
+                    cP.KnockbackSound();
                     cP.DamageStamina(playerCode.ActualDamage);
                 }
             }
