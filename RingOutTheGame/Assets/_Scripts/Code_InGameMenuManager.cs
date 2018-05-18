@@ -3,121 +3,90 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Code_InGameMenuManager : Code_MenuManager {
+    #region Variables
+    public Code_GameManager gameMng; // The gameMng in the hieracy needs to be dragged in this variable through the inspector.
+    public Code_SoundManager soundMng; // The SoundManager in the hieracy needs to be dragged in this variable through the inspector.
 
-    public Code_GameManager gameMng; // The game manager in the scene
-    public Code_SoundManager soundMng; // The Code_SoundManager
+    public bool allowStart; // Boolean to check if you may pause the game.
+    #endregion
 
-    public bool allowStart; // Boolean to check if you may pause he game
-
-    // Update is called once per frame
+    // Update is called once per frame.
     void Update() {
-        // When pressing the start button on the XBox controller
-        if (Input.GetButtonDown("StartButton") && !playerSelectMenu.activeSelf && allowStart) {
-            // Check if other menu's are open
-            if (!CheckMenuElements()) {
-                // Pause the game
-                Pause();
-                // Open the mainmenu and select the first button
-                ToggleMenus(0);
+        if (Input.GetButtonDown("StartButton") && !playerSelectMenu.activeSelf && allowStart) { // Check if you pressed the start input & if the playerselect menu is not active & allowstart is true.
+            if (!CheckMenuElements()) { // Check if the methode is false.
+                Pause(); // Call the Pause methode.
+                ToggleMenus(0); // Call the ToggleMenus methode.
             }
         }
     }
-
-    /// <summary>
-    /// Checks if any menu is open except for the mainmenu
-    /// </summary>
+    
+    // Checks if any menu is open except for the mainmenu.
     public bool CheckMenuElements() {
-        if (settingsMenu.activeInHierarchy || controlsMenu.activeInHierarchy || confirmQuit.activeInHierarchy) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return settingsMenu.activeInHierarchy || controlsMenu.activeInHierarchy || confirmQuit.activeInHierarchy; // Return true if one of the menus are open, else return false.
     }
-
-    /// <summary>
-    /// Initializes the game
-    /// </summary>
+    
+    // Initializes the game.
     public override void InitializeMenu() {
-        // Add all the buttons in the playerselectmenu to the playerselect list
         foreach (Transform item in playerSelectMenu.transform) {
-            // Only add the buttons to the list
-            if (item.GetComponent<Button>() != null) {
-                playerSelectMenuButtons.Add(item.gameObject);
+            if (item.GetComponent<Button>() != null) { // Check if the item has a Button component.
+                playerSelectMenuButtons.Add(item.gameObject); // Add all the buttons in the playerSelectMenu to the playerSelectMenuButtons.
             }
         }
-        // Add all the buttons in the mainmenu to the mainmenu list
         foreach (Transform item in mainMenuBorder.transform) {
-            // Only add the buttons to the list
-            if (item.GetComponent<Button>() != null) {
-                mainMenuButtons.Add(item.gameObject);
+            if (item.GetComponent<Button>() != null) { // Check if the item has a Button component.
+                mainMenuButtons.Add(item.gameObject); // Add all the buttons in the mainMenuBorder to the mainMenuButtons list.
             }
         }
-        // Add all the buttons in the settingsmenu to the settingsmenu list
-        foreach (Transform item in settingsMenu.transform) {
-            // Only add the buttons and toggles to the list
-            if (item.GetComponent<Button>() != null || item.GetComponent<Toggle>() != null) {
-                settingsButtons.Add(item.gameObject);
+        foreach (Transform item in settingsMenu.transform) { 
+            if (item.GetComponent<Button>() != null || item.GetComponent<Toggle>() != null) { // Check if the item has a Button component & // Check if the item has a Toggle component.
+                settingsButtons.Add(item.gameObject); // Add all the buttons in the settingsMenu to the settingsButtons list.
             }
         }
-        // Add all the buttons in the controlsmenu to the settingsmenu list
         foreach (Transform item in controlsMenu.transform) {
-            if (item.GetComponent<Button>() != null) {
-                controlButtons.Add(item.gameObject);
+            if (item.GetComponent<Button>() != null) { // Check if the item has a Button component.
+                controlButtons.Add(item.gameObject); // Add all the buttons in the controlsMenu to the controlButtons list.
             }
         }
-        // Add all the buttons in the confirmquitmenu to the confirmquit list
         foreach (Transform item in confirmQuit.transform) {
-            // Only add the buttons to the list
-            if (item.GetComponent<Button>() != null) {
-                confirmQuitButtons.Add(item.gameObject);
+            if (item.GetComponent<Button>() != null) { // Check if the item has a Button component.
+                confirmQuitButtons.Add(item.gameObject); // Add all the buttons in the confirmQuit to the confirmQuitButtons list.
             }
         }
-        // Add all the buttons in the replayagaintmenu to the playagain list
         foreach (Transform item in playAgain.transform) {
-            // Only add the buttons to the list
-            if (item.GetComponent<Button>() != null) {
-                playAgainButtons.Add(item.gameObject);
+            if (item.GetComponent<Button>() != null) { // Check if the item has a Button component.
+                playAgainButtons.Add(item.gameObject); // Add all the buttons in the playAgain to the playAgainButtons list.
             }
         }
-        // Pick the first button in the mainmenu 
-        PickFirstButton(playerSelectMenuButtons, !playerSelectMenu.activeSelf, 0);
+        PickFirstButton(playerSelectMenuButtons, !playerSelectMenu.activeSelf, 0); // Call the PickFirstButton methode.
     }
 
     /// <summary>
-    /// Load the scene with the scene index
+    /// Load the scene with the scene index.
     /// </summary>
-    /// <param name="scene"></param>
+    /// <param name="scene">Give scene number</param>
     public override void LoadGameScene(int scene) {
-        SceneManager.LoadScene(scene);
-        // Pause the game
-        Pause();
+        SceneManager.LoadScene(scene); // Load the scene with the scene index.
+        Pause(); // Call the Pause methode.
     }
-
-    /// <summary>
-    /// Pause the game
-    /// </summary>
+    
+    // Pause or Unpause the game.
     public override void Pause() {
-        // Unpause the game
-        if (Time.timeScale == 0) {
-            //Time.timeScale = 1;
-            // Play the ambient music
-            if (soundMng.volumeChecks[0].isOn && soundMng.volumeChecks[1].isOn) {
-                soundMng.musicAudioSource[0].mute = true;
-                soundMng.musicAudioSource[1].mute = false;
-                soundMng.PlayGameMusic();
+        if (Time.timeScale == 0) { // Check if the timescale is 0.
+            if (soundMng.volumeChecks[0].isOn && soundMng.volumeChecks[1].isOn) { // Check if volumeChecks[0].isOn & soundMng.volumeChecks[1].isOn.
+                soundMng.musicAudioSource[0].mute = true; // Mute the musicAudioSource[0].
+                soundMng.musicAudioSource[1].mute = false; // UnMute musicAudioSource[1].
+                soundMng.PlayGameMusic(); // Call the PlayGameMusic.
             }
         }
-        // Pause the game
-        else {            
-            Time.timeScale = 0;
-            allowStart = false;
+        else { // If timescale is not 0.
+            Time.timeScale = 0;  // Pause the game.
+            allowStart = false; // Set allowStart boolean to false.
 
             // Play the mainmenu music
-            if (soundMng.volumeChecks[0].isOn && soundMng.volumeChecks[1].isOn) {
-                soundMng.musicAudioSource[0].mute = false;
-                soundMng.musicAudioSource[1].mute = true;
-                soundMng.PlayMainMenuMusic();                        
+            if (soundMng.volumeChecks[0].isOn && soundMng.volumeChecks[1].isOn) { // Check if volumeChecks[0].isOn & soundMng.volumeChecks[1].isOn.
+                soundMng.musicAudioSource[0].mute = false; // UnMute the musicAudioSource[0].
+                soundMng.musicAudioSource[1].mute = true; // Mute the musicAudioSource[0].
+                soundMng.PlayMainMenuMusic(); // Call the PlayGameMusic.
             }
         }
     }
