@@ -10391,6 +10391,26 @@ Prefab:
       propertyPath: keyboardControlled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114888414995425914, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: staminaRegenAmount
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496726265503940, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: staminaRegenAmount
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420557575238606, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: staminaRegenAmount
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569293833564106, guid: 7df1a967f926258499309f43d541aba9,
+        type: 2}
+      propertyPath: staminaRegenAmount
+      value: 7.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7df1a967f926258499309f43d541aba9, type: 2}
   m_IsPrefabParent: 0
