@@ -10,6 +10,7 @@ public class Code_SplashScreen : MonoBehaviour {
 
     // Use this for initialization.
     void Start() {
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
         StartCoroutine(SplashScreenAnimation()); // Call the SplashScreenAnimation methode.
     }
