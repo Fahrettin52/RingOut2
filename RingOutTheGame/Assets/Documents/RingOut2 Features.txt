@@ -1,0 +1,30 @@
+- More info for the players, like pickups and description about knockback etc
+- Particles when pressed button
+- Countdown sound like 3,2,1 GO
+- When pressed play, or back to other scene wait for the sound instead of instant
+- When holding "Attack" Make a charge attack
+- Check assets in the game scene some are weird when other parts fall off
+- Walking over water slows down the characters
+- Shader when behind the frog
+- Lifestock for each player
+- Back button on B
+- Keyboard or controller per player
+- Don't stop the player's movement when touching the walls/obstacles
+- Add "Swoosh" around the shield Particle when attack
+- Add stamina pickups and remove them from the chest
+- Change sprite for attack modifier
+- Teleport icon color change for each player
+- Change sprites to player icon instead of controller
+- Whitescreen between levels
+- Player 1 navigate through level
+- Person that pauzes can only navigate
+- Make correct prefabs for like players, menu, managers etc
+- Preset values of our game stats in scripts
+- Make prefabs of all the hieracy objects that are dragged in variables
+- Check function if you can divade it in more chunks
+- Remove stuff from update and call it in functions
+- Correct anchors for other screen resolution for each GUI
+- Character implement
+- Make foler and put all psd in it
+
+- SkyBox the part under the horizon set the clouds rotation
