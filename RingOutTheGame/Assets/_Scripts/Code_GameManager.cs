@@ -9,7 +9,7 @@ public class Code_GameManager : MonoBehaviour {
     private List<GameObject> activePlayers = new List<GameObject>(); // List of players that are playing the game
     public GameObject[] spawnLocations; // Array of array of spawn locations, based on the chosen amount of players
     private List<Vector3> spawnPosition = new List<Vector3>(); // Private list of Vector3 children objects in the items of spawnLocations
-    private int playersSelected; // The amount of players selected to play the game
+    public int playersSelected; // The amount of players selected to play the game
     private int oldPlayersSelected; // Value that saves the playerSelected, so it can compare it later on    
     private bool firstTimeStarting; // Differentiates the code when it's the first time calling StartGameCountdown Function
 
@@ -31,6 +31,8 @@ public class Code_GameManager : MonoBehaviour {
     [Header("PlayerSelect")]
     public GameObject playerSelectMenu; // Menu for the player selection screen
     public GameObject playAgainMenu; // Menu for the replay game
+    public GameObject shieldIconsParent; // The shield icons parent
+    public GameObject[] shieldIcons; // The shield icons
 
     [Header("Sound")]
     public Code_SoundManager soundMng; // The sound manager
@@ -87,6 +89,28 @@ public class Code_GameManager : MonoBehaviour {
 
         // Spawns the players to their respective spawnPoint
         SpawnPlayers();
+
+        // Set the shieldIcons HUD active
+        if (shieldIconsParent != null) {
+            shieldIconsParent.SetActive(true);
+        }
+
+        // Call the ShowShieldIcons methode
+        ShowShieldIcons();
+    }
+
+    // Show the ShieldIcons on the HUD for each player
+    private void ShowShieldIcons() {
+        for (int i = 0; i < playersSelected; i++) {
+            shieldIcons[i].SetActive(true);
+        }
+        if (playersSelected == 4) {
+            shieldIcons[2].GetComponent<RectTransform>().localPosition = new Vector3(-900, -475, 0);
+        }
+
+        if (playersSelected == 3) {
+            ingameMng.allMenus.localPosition = new Vector3(0, 50, 0); // Set the menu a little higher on the y axis
+        }
     }
 
     // Fills the spawnVector3 list with new values based on the number of players playing

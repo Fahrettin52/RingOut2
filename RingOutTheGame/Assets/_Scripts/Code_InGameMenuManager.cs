@@ -8,6 +8,8 @@ public class Code_InGameMenuManager : Code_MenuManager {
     public Code_SoundManager soundMng; // The SoundManager in the hieracy needs to be dragged in this variable through the inspector.
 
     public bool allowStart; // Boolean to check if you may pause the game.
+
+    public RectTransform allMenus; // The MainMenu in the hieracy needs to be dragged in this variable through the inspector.
     #endregion
 
     // Update is called once per frame.
